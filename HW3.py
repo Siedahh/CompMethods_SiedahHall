@@ -39,7 +39,7 @@ E_pot_map = np.array(E_pot_map)
 bounds=np.array([-1,-2e-2,-1e-3,-4e-4,-1e-4,1e-4,4e-4,1e-3,2e-2,1])
 norm = colors.BoundaryNorm(bounds,275)
 
-plt.imshow(E_pot_map, origin = 'lower',cmap = 'RdBu_r',extent=[ax/2,-ax/2,ay/2,-ay/2],norm = norm)
+plt.imshow(E_pot_map, origin = 'lower',cmap = 'RdBu_r',extent=[ax,-ax,ay,-ay],norm = norm)
 clb = plt.colorbar(format='%.0e')
 plt.clim(bounds[0],bounds[bounds.size-1])
 clb.set_label('Electric Potential')
