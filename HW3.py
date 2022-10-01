@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.colors as colors
-import matplotlib.artist as artist
+
 
 ############################################## PART A #################################################
 ''' Two charges, +C and -C, 10cm apart, calculate the electric potential on a 1m x 1m square plane
@@ -11,15 +11,15 @@ points on the grid and make a visualization on the screen of the potential by us
 # variables (position in units of cm)
 q1,q2,x,y = 1,-1,10,0
 
-# Electric potential
+# Electric potential - spatial input has units of m
 def E_potential(q1,q2,x,y):
     e0 = 1                                                      # permitivitty of free space set to 1
-    r1 = np.sqrt((x+5)**2+y**2)                                 # position of +C
-    r2 = np.sqrt((x-5)**2+y**2)                                 # position of -C
+    r1 = np.sqrt((x+0.05)**2+y**2)                              # position of +C
+    r2 = np.sqrt((x-0.05)**2+y**2)                              # position of -C
     return (q1)/(4*np.pi*e0*(r1)) + (q2)/(4*np.pi*e0*(r2))      # sum of potentials
 
-# x and y spatial ranges in units of cm
-ax,bx,cx = -50,50,100
+# x and y spatial ranges in units of m (1cm spacing)
+ax,bx,cx = -0.5,0.5,100
 ay,by,cy = ax,bx,cx
 
 # 2D array representing electric potential values in 2D space
@@ -36,16 +36,15 @@ E_pot_map = np.array(E_pot_map)
 ############## Visualization of potential in 1m x 1m grid
 
 # discrete color values for image
-bounds=np.array([-1,-2e-2,-1e-3,-4e-4,-1e-4,1e-4,4e-4,1e-3,2e-2,1])
+bounds=np.array([-10,-2,-1e-1,-4e-2,-9e-3,9e-3,4e-2,1e-1,2,10])
 norm = colors.BoundaryNorm(bounds,275)
-
 plt.imshow(E_pot_map, origin = 'lower',cmap = 'RdBu_r',extent=[ax,-ax,ay,-ay],norm = norm)
 clb = plt.colorbar(format='%.0e')
-plt.clim(bounds[0],bounds[bounds.size-1])
-clb.set_label('Electric Potential')
+clb.set_label('Electric Potential (J/C)')
+
 plt.title('Electric Potential of a Positive and Negative Charge')
-plt.xlabel(' x position (cm)')
-plt.ylabel(' y position (cm)')
+plt.xlabel(' x position (m)')
+plt.ylabel(' y position (m)')
 plt.show()
 
 ############################################## PART B #################################################
@@ -75,19 +74,19 @@ def central_diff_2D(a,b,c):
 # Electric field
 Ex, Ey = central_diff_2D(ax,ay,cy)
 
-
 ############# Visualization of Electric Field
 
 # positive and negative charge labels
-plt.text(-5, 0, '+', color = 'r', fontsize=15, va='center', ha='center', weight='bold')
-plt.text(5,0, '-', color = 'b', fontsize=15, va='center', ha='center', weight='bold')
+plt.text(-0.05,0, '+', color = 'r', fontsize=15, va='center', ha='center', weight='bold')
+plt.text(0.05,0, '-', color = 'b', fontsize=15, va='center', ha='center', weight='bold')
 
-color = np.log(np.sqrt(Ex**2 + Ey**2))                              # gradient color for E field
+color = np.log(np.sqrt(Ex**2 + Ey**2))                              # log color gradient for E field
 X,Y = np.meshgrid(np.linspace(ax,bx,cy),np.linspace(ay,by,cy))
-plt.streamplot(X,Y,Ex,Ey,color=color,density=1.3,cmap ='Greys')     # Streamplot
+plt.streamplot(X,Y,Ex,Ey,color=color,density=1.3,cmap ='Greys')
 clb=plt.colorbar()
-clb.set_label('Electric Field')
+clb.set_label('Electric Field (log scale)')
 plt.title('Electric Field of a Positive and Negative Charge')
-plt.xlabel('x position (cm)')
-plt.ylabel('y position (cm)')
+plt.xlim([-.5,.5])
+plt.xlabel('x position (m)')
+plt.ylabel('y position (m)')
 plt.show()
