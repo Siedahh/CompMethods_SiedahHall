@@ -1,5 +1,5 @@
 # CompMethods_SiedahHall
-Computational Methods in Physics exercises and assignments
+Computational Methods in Physics exercises and assignments found in Computational Physics, Mark Newman, 2012.
 
 HW1 - multiple plots on one figure
 
