@@ -8,3 +8,5 @@ HW2 - integration, from 0 to x
 HW3 - differentiation | electric potential and electric field of a positive and negative charge
 
 HW4 - solutions to nonlinear equations | Lagrange point, L1, between Earth and moon
+
+HW5 - discrete Fourier transform and discrete cosine transform | smoothing Dow Jones data over two different periods
