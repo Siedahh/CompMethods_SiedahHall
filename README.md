@@ -10,3 +10,7 @@ HW3 - differentiation | electric potential and electric field of a positive and 
 HW4 - solutions to nonlinear equations | Lagrange point, L1, between Earth and moon
 
 HW5 - discrete Fourier transform and discrete cosine transform | smoothing Dow Jones data over two different periods
+
+HW6 - Monte Carlo simulation | Brownian motion of a particle confined to some area
+
+HW7 - Monte Carlo integration | diverging integrand with finite value
