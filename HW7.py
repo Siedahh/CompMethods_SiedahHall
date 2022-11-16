@@ -32,9 +32,10 @@ def P(x):
     return w(x)/weightIntegral
 
 # if you would like to see the visual representation of the distribution uncomment below:
-X = np.linspace(0,1,1000)
-plt.plot(X,P(X),'bo')
+n = 1000
+X = np.linspace(1/n,1,n)
 plt.plot(X,1/(2*np.sqrt(X)),'r')
+plt.plot(X,P(X),'bo',markersize=1)
 plt.legend(['w(x)/integral(w(x))','1/(2sqrt(x))'])
 plt.title('distribution from which sample points are drawn')
 plt.xlabel('x values')
@@ -47,11 +48,16 @@ N = 1e6
 def f(x):
     return x**-0.5/(np.exp(x)+1)
 
+def transformation(x):
+    '''Obtained from using the transformation method: integrate p(x) from -inf to x(z),
+    set this to equal to z, solve for x. z are the uniform random generated numbers.'''
+    return x**2
+
 def ImportanceSampling(N,f,w):
     distribution = 0
     for i in range(1,N):
         x = random.random()
-        xi = 1/(2*np.sqrt(x))
+        xi = transformation(x)
         distribution += f(xi)/w(xi)
     return distribution*weightIntegral/N                     # 2 is the value of the weighted integral
 
