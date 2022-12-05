@@ -14,3 +14,5 @@ HW5 - discrete Fourier transform and discrete cosine transform | smoothing Dow J
 HW6 - Monte Carlo simulation | Brownian motion of a particle confined to some area
 
 HW7 - Monte Carlo integration | diverging integrand with finite value
+
+HW8 - Ordinary Differential Equations | trajectory of canonball under influence of drag
